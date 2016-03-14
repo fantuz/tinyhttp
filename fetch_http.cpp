@@ -99,7 +99,7 @@ error:
 
 // Response data/funcs
 struct HttpResponse {
-	std::vector<char> body;
+    std::vector<char> body;
     int code;
     int len;
 };
@@ -117,7 +117,9 @@ static void response_body(void* opaque, const char* data, int size)
 }
 
 static void response_header(void* opaque, const char* ckey, int nkey, const char* cvalue, int nvalue)
-{ /* example doesn't care about headers */ }
+{
+    /* example doesn't care about headers */
+}
 
 static void response_code(void* opaque, int code)
 {
@@ -201,9 +203,8 @@ int main(int argc, char *argv[])
         printf("Response: %d\n", response.code);
 
     if (!response.body.empty()) {
-        for (int i = 0; i < response.len; i++) {
+        for (int i = 0; i < response.len; i++) 
             printf("%c", response.body[i]);
-        }
     }
 
     return 0;
