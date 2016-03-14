@@ -47,15 +47,14 @@ $ g++ -o fetch_http fetch_http.cpp
 
 // directly embed the source here
 extern "C" {
-	#include "http.c"
-	#include "header.c"
-	#include "chunk.c"
+    #include "http.c"
+    #include "header.c"
+    #include "chunk.c"
 }
 
 // return a socket connected to a hostname, or -1
 int connectsocket(const char* host, int port)
 {
-
     addrinfo* result = NULL;
     sockaddr_in addr = {0};
     int s;
@@ -150,7 +149,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    const char *request_template = "GET /%s HTTP/1.0\r\nContent-Length: 0\r\n\r\n";
+    const char *request_template = "GET %s HTTP/1.0\r\nContent-Length: 0\r\n\r\n";
     char request[1024];
     snprintf(request, sizeof(request), request_template, path);
     int len = send(conn, request, strlen(request), 0);
